@@ -1090,7 +1090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
-  target: {fileID: 0}
+  target: {fileID: 1719163717}
   minimumDistance: 1
 --- !u!135 &887297662
 SphereCollider:
@@ -1117,7 +1117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 426ccdbdfc266394e8ea20e0f284a8bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
+  mainCamera: {fileID: 327244646}
   is_dragging: 1
   Door_Chosen: 0
 --- !u!54 &887297665
