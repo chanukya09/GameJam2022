@@ -7,6 +7,7 @@ TagManager:
   - Orb
   - Food
   - Score
+  - Lava
   layers:
   - Default
   - TransparentFX
