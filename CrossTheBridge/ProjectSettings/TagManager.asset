@@ -8,6 +8,7 @@ TagManager:
   - Food
   - Score
   - Lava
+  - Door
   layers:
   - Default
   - TransparentFX

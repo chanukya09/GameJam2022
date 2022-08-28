@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Deadly_Trap : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class Deadly_Trap : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            Destroy(collision.gameObject);
+            
         }
     }
 
