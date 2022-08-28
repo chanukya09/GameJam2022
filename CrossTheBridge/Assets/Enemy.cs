@@ -19,8 +19,10 @@ public class Enemy : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player")){
+            pref.active = true;
             Destroy(this.gameObject);
-            Instantiate(pref, this.transform.position, this.transform.rotation);
+            
+            //Instantiate(pref, this.transform.position, this.transform.rotation);
         }
         
     }

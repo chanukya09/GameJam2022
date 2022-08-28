@@ -9,6 +9,7 @@ TagManager:
   - Score
   - Lava
   - Door
+  - Tomato
   layers:
   - Default
   - TransparentFX
