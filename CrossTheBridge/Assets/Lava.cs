@@ -2,23 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class Lava : MonoBehaviour
 {
-    public GameObject gb;
-    private Vector3 doorpos = new Vector3(0,0,0);
-
     // Start is called before the first frame update
-
+    void Start()
+    {
+        
+    }
 
     // Update is called once per frame
     void Update()
     {
         
     }
-
-    public void Rotate()
+    private void OnTriggerEnter(Collider other)
     {
-        gb.transform.RotateAround(transform.position, Vector3.up, 90);
+        if (other.CompareTag("Player")){
+            Debug.Log("win level");
+        }
     }
-   
 }

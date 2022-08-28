@@ -23,7 +23,7 @@ public class Food_Item : MonoBehaviour
         is_dragging=true;
         if(Physics.Raycast(ray,out RaycastHit raycastHit))
         {
-            transform.position=new Vector3(raycastHit.point.x,1,raycastHit.point.z);
+            transform.position=new Vector3(raycastHit.point.x,0,raycastHit.point.z);
         }
     }
     

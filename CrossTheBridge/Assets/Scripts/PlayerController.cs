@@ -1,8 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
+//using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,21 +14,21 @@ public class PlayerController : MonoBehaviour
     public static PlayerDelegate playerDelegate;
 
     public bool following = false;
-    int i = 0;
-    public int numberOfItems;
+    int i=0;
+    public Transform[] trf;
 
+    int x, y;
     List<GameObject> go = new List<GameObject>();
+
     //public GameObject bullet,Target;
 
-    private void Awake() 
-    {
-        Cursor.lockState = CursorLockMode.None;
+    private void Awake() {
+       // Cursor.lockState = CursorLockMode.Locked;
         //rb=GetComponent<Rigidbody>();
         /*health.setMaxHealth(maxHealth);
         presentHealth=maxHealth;*/
     }
-    private void Update()
-    {
+    private void Update() {
         /*Vector3 TDir= Target.transform.position-transform.position;
         Debug.Log(TDir.magnitude);
         if(TDir.magnitude<10){
@@ -38,50 +37,47 @@ public class PlayerController : MonoBehaviour
         }else{
         rb.transform.Translate(Tdir*Time.deltaTime*speed);
         }*/
-        //rb.transform.Translate(rawInputUD*Time.deltaTime*speed);
-        //rb.transform.Translate(rawInputLR*Time.deltaTime*speed);
-            InputMovement();
-            /*if (following)
+        rb.transform.Translate(rawInputUD*Time.deltaTime*speed);
+        rb.transform.Translate(rawInputLR*Time.deltaTime*speed);
+        if (following)
+        {   
+            for(int i = 0; i < go.Count; i++)
             {
-                for (int i = 0; i < go.Count; i++)
+                if (i == 0)
                 {
-                    if (i == 0)
-                    {
-                        go[i].transform.position = this.transform.position - new Vector3(1, 0, 1);
-                    }
-                    if (i == 1)
-                    {
-                        go[i].transform.position = this.transform.position - new Vector3(1, 0, 0);
-                    }
-                    if (i == 2)
-                    {
-                        go[i].transform.position = this.transform.position - new Vector3(0, 0, 1);
-                    }
-
+                    go[i].transform.position = this.transform.position - new Vector3(1, 0, 1);
                 }
-            }*/
+                if (i == 1)
+                {
+                    go[i].transform.position = this.transform.position - new Vector3(1, 0, 0);
+                }
+                if (i == 2)
+                {
+                    go[i].transform.position = this.transform.position - new Vector3(0, 0, 1);
+                }
 
+            }
+            Debug.Log("collider1 placed");
         }
 
-    private void InputMovement()
-    {
-        rb.transform.Translate(Vector3.right * Input.GetAxis("Horizontal")*Time.deltaTime*speed);
-        rb.transform.Translate(Vector3.forward * Input.GetAxis("Vertical")*Time.deltaTime*speed);
-
     }
-
-
-
-    /*public void movement(InputAction.CallbackContext context){
-   Vector2 inputValue= context.ReadValue<Vector2>();
-   rawInputUD = new Vector3(0,0,inputValue.y);
-   rawInputLR=new Vector3(inputValue.x,0,0);
-   //Debug.Log(inputValue);
-   }*/
-
-    private void OnCollisionEnter(Collision other)
+   /* 
+        public void movement(InputAction.CallbackContext context){
+        Vector2 inputValue= context.ReadValue<Vector2>();
+        rawInputUD = new Vector3(0,0,inputValue.y);
+        rawInputLR=new Vector3(inputValue.x,0,0);
+        Debug.Log(inputValue);
+        }
+   */
+    private void OnTriggerEnter(Collider other)
     {
-       
+        if (!go.Contains(other.gameObject))
+        {
+            go.Add(other.gameObject);
+            i++;
+        }
+            
+        following = true;
     }
 
 }
