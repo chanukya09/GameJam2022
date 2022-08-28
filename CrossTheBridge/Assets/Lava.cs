@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Lava : MonoBehaviour
 {
-    public Scene scene;
+    public string scene;
     
     // Start is called before the first frame update
     void Start()
@@ -22,7 +22,7 @@ public class Lava : MonoBehaviour
     {
         if (other.CompareTag("Player")){
             Debug.Log("win level");
-            SceneManager.LoadScene(scene.buildIndex);
+            SceneManager.LoadScene(scene);
         }
     }
 }
